@@ -1,13 +1,14 @@
-create table pet(
-	pet_id int primary key,
-	description varchar(300),
-	age int,
-	health_status varchar(10),
-	vaccinated varchar(3),
-	date_registered date,
-	shelter_id int unique,
-	pet_owner_id int
+CREATE TABLE pet (
+  pet_id INT PRIMARY KEY DEFAULT pet_seq.NEXTVAL,
+  description VARCHAR2(300),
+  age INT,
+  health_status VARCHAR2(10),
+  vaccinated VARCHAR2(3),
+  date_registered DATE,
+  shelter_id INT,
+  pet_owner_id INT unique
 );
+
 
 drop table pet;
 
@@ -49,3 +50,62 @@ create table pet_staff(
 );
 
 alter table pet add foreign key (pet_owner_id) REFERENCES pet_owner (pet_owner_id);
+
+CREATE SEQUENCE pet_seq
+START WITH 1
+INCREMENT BY 1;
+
+ALTER TABLE pet
+MODIFY pet_id DEFAULT pet_seq.NEXTVAL;
+
+-- Data Input for pet table --
+INSERT INTO pet (
+  description, age, health_status, vaccinated, date_registered, shelter_id, pet_owner_id ) VALUES (
+  'good cat, shy but cause chaos', 2, 'Sick', 'Yes',
+  TO_DATE('2025-07-11', 'YYYY-MM-DD'), 111, NULL );
+
+INSERT INTO pet (
+  description, age, health_status, vaccinated, date_registered, shelter_id, pet_owner_id ) VALUES (
+  'not a friendly cat, shy but affectionate', 3, 'Healthy', 'Yes',
+  TO_DATE('2025-07-11', 'YYYY-MM-DD'), 111, NULL );
+
+INSERT INTO pet (
+  description, age, health_status, vaccinated, date_registered, shelter_id, pet_owner_id ) VALUES (
+  'good dog, shy but cause chaos', 2, 'Healthy', 'Yes',
+  TO_DATE('2025-07-11', 'YYYY-MM-DD'), 111, NULL );
+
+INSERT INTO pet (
+  description, age, health_status, vaccinated, date_registered, shelter_id, pet_owner_id ) VALUES (
+  'not a friendly dog, shy but affectionate', 4, 'Healthy', 'Yes',
+  TO_DATE('2025-07-11', 'YYYY-MM-DD'), 111, NULL );
+
+INSERT INTO pet (
+  description, age, health_status, vaccinated, date_registered, shelter_id, pet_owner_id ) VALUES (
+  'good cat, shy but cause chaos', 5, 'Sick', 'Yes',
+  TO_DATE('2025-07-11', 'YYYY-MM-DD'), 111, NULL );
+
+INSERT INTO pet (
+  description, age, health_status, vaccinated, date_registered, shelter_id, pet_owner_id ) VALUES (
+  'not a friendly cat, shy but affectionate', 7, 'Sick', 'Yes',
+  TO_DATE('2025-07-11', 'YYYY-MM-DD'), 111, NULL );
+
+INSERT INTO pet (
+  description, age, health_status, vaccinated, date_registered, shelter_id, pet_owner_id ) VALUES (
+  'good dog, shy but cause chaos', 1, 'Healthy', 'NO',
+  TO_DATE('2025-07-11', 'YYYY-MM-DD'), 111, NULL );
+
+INSERT INTO pet (
+  description, age, health_status, vaccinated, date_registered, shelter_id, pet_owner_id ) VALUES (
+  'not a friendly dog, shy but affectionate', 4, 'Healthy', 'Yes',
+  TO_DATE('2025-07-11', 'YYYY-MM-DD'), 111, NULL );
+
+
+INSERT INTO pet (
+  description, age, health_status, vaccinated, date_registered, shelter_id, pet_owner_id ) VALUES (
+  'good cat, shy but cause chaos', 5, 'Sick', 'Yes',
+  TO_DATE('2025-07-11', 'YYYY-MM-DD'), 111, NULL );
+
+INSERT INTO pet (
+  description, age, health_status, vaccinated, date_registered, shelter_id, pet_owner_id ) VALUES (
+  'not a friendly cat, shy but affectionate', 7, 'Healthy', 'Yes',
+  TO_DATE('2025-07-11', 'YYYY-MM-DD'), 111, NULL );
